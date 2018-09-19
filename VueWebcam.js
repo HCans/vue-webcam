@@ -25,11 +25,11 @@ const WebcamComponent = Vue.extend({
     },
     width: {
       type: Number,
-      default: 400
+      default: 800
     },
     height: {
       type: Number,
-      default: 300
+      default: 600
     },
     mirror: {
       type: Boolean,
