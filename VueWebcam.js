@@ -59,19 +59,25 @@ const WebcamComponent = Vue.extend({
       if (!this.hasUserMedia) return null;
 
       const canvas = this.getCanvas();
-      return canvas.toDataURL(this.screenshotFormat);
+      return canvas.toDataURL(this.screenshotFormat, 1);
     },
     getCanvas () {
       if (!this.hasUserMedia) return null;
 
       const video = this.$refs.video;
       if (!this.ctx) {
+        // Get the device pixel ratio, falling back to 1.
+        var dpr = window.devicePixelRatio || 1;
+        // console.log('Here the pixel ratio: ', dpr)
         const canvas = document.createElement('canvas');
-        canvas.height = video.clientHeight;
-        canvas.width = video.clientWidth;
+        // canvas.height = video.clientHeight;
+        // canvas.width = video.clientWidth;
+        canvas.width = video.clientWidth * dpr;
+        canvas.height = video.clientHeight * dpr;
         this.canvas = canvas;
 
         this.ctx = canvas.getContext('2d');
+        this.ctx.scale(dpr, dpr);
 
           /*if (this.mirror) {
            const context = canvas.getContext('2d');
