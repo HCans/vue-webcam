@@ -70,14 +70,14 @@ const WebcamComponent = Vue.extend({
         var dpr = window.devicePixelRatio || 1;
         // console.log('Here the pixel ratio: ', dpr)
         const canvas = document.createElement('canvas');
-        // canvas.height = video.clientHeight;
-        // canvas.width = video.clientWidth;
-        canvas.width = video.clientWidth * dpr;
-        canvas.height = video.clientHeight * dpr;
+        canvas.height = video.clientHeight;
+        canvas.width = video.clientWidth;
+        // canvas.width = video.clientWidth * dpr;
+        // canvas.height = video.clientHeight * dpr;
         this.canvas = canvas;
 
         this.ctx = canvas.getContext('2d');
-        this.ctx.scale(dpr, dpr);
+        // this.ctx.scale(dpr, dpr);
 
           /*if (this.mirror) {
            const context = canvas.getContext('2d');
